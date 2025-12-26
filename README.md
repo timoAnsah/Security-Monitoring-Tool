@@ -1,2 +1,2 @@
 # Security-Monitoring-Tool
-How Security 7 Monitoring in AWS works with some of the services
+How Security & Monitoring in AWS works with some of the services
