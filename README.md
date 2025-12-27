@@ -34,7 +34,12 @@ If i took away CloudWatch & alarms from the solution, what will happen?
 I will configure direct CloudTrail notifications & compare it against using CloudWatch alarms 
 In this solution, I will configure direct SNS notification form CloudTrail, Compare notification methods between CloudWatch & CloudTrail
 
+
+<img width="2172" height="1265" alt="image" src="https://github.com/user-attachments/assets/7b9fbfa2-0f71-4452-b8a4-45d22096194d" />
+
+
 # Creating The Secret
 
 AWS secrets manager is a security service for storing secrets i.e. database credentials, account IDs, API Keys & anything that is classed as sensitive information that could cause damage if access to gained without authority.
 I created a secret called lifehack in Secrets Manager. this secret is a string that contains a phrase by Charles Bukowski  "Don’t Try"
+
