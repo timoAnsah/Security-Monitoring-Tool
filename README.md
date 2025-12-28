@@ -1,14 +1,15 @@
-# Security Monitoring Tool
+# AWS Security Monitoring System
 
+A security monitoring system that detects access to sensitive secrets in AWS and sends real-time alerts using  Secrets Manager, CloudTrail, CloudWatch logs & alarms and SNS.
+
+# Purpose & Motivation
 Ever wondered how to keep tabs on who’s accessing your most sensitive data in AWS? 
-it could be API Keys, database credentials, or other critical secrets. its a security risk every time someone accesses confidential information. 
+Sensitive information such as API Keys, database credentials, or other critical secrets. Every access to this risk presents a potential security risk.
 That is why companies invest heavily in robust monitoring system to track & alert on any unusual activity. But its not just about accessing secrets
-In my role as an MCR engineer, modern broadcast environments rely on strict operational accountability and real‑time service assurance.
-every operational & management action is logged against an authenticated user, ensuring full traceability of activity and reinforcing a culture of accountability across the team. 
-This exposure has the foundation of the AWS Security Monitoring System designed in this project.
+In my role as an MCR engineer, modern broadcast environments rely on strict operational accountability and real‑time monitoring & alerting services like dataminer.
+Every operational & management action is logged against an authenticated user, ensuring full traceability of activity and reinforcing a culture of accountability across the team. 
 
-The system continuously evaluates key performance and security metrics, triggering automated alarms whenever thresholds are breached—similar to how broadcast monitoring alerts us to service degradation in television workflows. 
-By combining detailed user‑action auditing with proactive alerting, this AWS‑based solution delivers a robust, transparent, and highly responsive security
+This project implements a monitoring and alerting pipeline that detects when my secret in AWS Secrets Manager is accessed (via console or CLI) I will be notified via Amazon SNS.I created this project to  simulate & understand how AWS Security & monitoring services work together to monitor & protect data in production environment.
 
 In this project I will
 - Create a secret in Secrets Manager
@@ -17,29 +18,37 @@ In this project I will
 - create SNS alerts to get notified when secrets are accessed.
 - build a second notification system & compare which approach delivers better security alerts
 
+
 # AWS Services Used:
-- Secrets Manager - store a secret to protect
-- CloudTrail - record API activity detect GetSecretValue
-- CloudWatch [Logs & Alarm) - central log analysis & Metric Filters + Alarms (turn events into alerts)
+- Secrets Manager - securely store sensitive credentials
+- CloudTrail - record API activity made against Secrets Manager
+- CloudWatch Logs - Store and analyse CloudTrail events
+- CloudWatch Alarms -Metric filters that trigger alerts based on access patterns
 - S3 Bucket - long-term storage for CloudTrail logs
-- Simple Notification Service (SNS) - email notifications
-- E-mail
+- Simple Notification Service (SNS) - & email notification service via E-mail & SMS
+- E-mail - Real time alert via SNS
 
 
-This project implements a monitoring and alerting pipeline that detects when my secret in AWS Secrets Manager is accessed (via console or CLI) I will be notified via Amazon SNS. 
-This solution has many components, CloudTrail, CloudWatch, alarms, SNS & S3, Secrets Manager.
-It also includes a second approach direct CloudTrail SNS delivery and compares both methods,  
 
-If i took away CloudWatch & alarms from the solution, what will happen?
-I will configure direct CloudTrail notifications & compare it against using CloudWatch alarms 
-In this solution, I will configure direct SNS notification form CloudTrail, Compare notification methods between CloudWatch & CloudTrail
-
+# Architecture
 
 <img width="2172" height="1265" alt="image" src="https://github.com/user-attachments/assets/7b9fbfa2-0f71-4452-b8a4-45d22096194d" />
 
+The solution above has many components, CloudTrail, CloudWatch, alarms, SNS, S3 & Secrets Manager. 
 
-# Creating The Secret
+ If i took away CloudWatch & alarms from the solution, what will happen?
+I implemented a second approach & configured SNS notifications directly from CloudTrail & compared it against using just CloudWatch alarms.
 
-AWS secrets manager is a security service for storing secrets i.e. database credentials, account IDs, API Keys & anything that is classed as sensitive information that could cause damage if access to gained without authority.
-I created a secret called lifehack in Secrets Manager. this secret is a string that contains a phrase by Charles Bukowski  "Don’t Try"
+# Architecture
+<img width="1904" height="1104" alt="image" src="https://github.com/user-attachments/assets/a653f51e-f6fb-4f10-859f-442652563b3c" />
 
+
+# What I learned
+- How CloudTrail captures and structures Secrets Manager API events
+- How to create CloudWatch metric filters for security monitoring
+- How SNS integrates with monitoring services for alerting
+- How real-world security teams detect and respond to sensitive data access
+
+# Future Improvements
+- Integrate AWS Lambda for advanced event processing
+- Add a database service like DynamoDB for auditing purposes
