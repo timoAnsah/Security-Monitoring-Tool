@@ -40,15 +40,46 @@ The solution above has many components, CloudTrail, CloudWatch, alarms, SNS, S3 
 I implemented a second approach & configured SNS notifications directly from CloudTrail & compared it against using just CloudWatch alarms.
 
 # Architecture
-<img width="1904" height="1104" alt="image" src="https://github.com/user-attachments/assets/a653f51e-f6fb-4f10-859f-442652563b3c" />
+<img width="812" height="487" alt="architecture" src="https://github.com/user-attachments/assets/e1c6427f-130e-4644-a7f2-cdd13415f704" />
+
 
 
 # What I learned
-- How CloudTrail captures and structures Secrets Manager API events
-- How to create CloudWatch metric filters for security monitoring
-- How SNS integrates with monitoring services for alerting
-- How real-world security teams detect and respond to sensitive data access
+- CloudTrail captures and structures Secrets Manager API events
+- CloudWatch metric filters for security monitoring
+- SNS integrates with monitoring services for alerting
 
+# What problem it solves
+This project solves the lack of visibility around secrets access in AWS by detecting and alerting on the exact moment sensitive data is retrieved, allowing fast response
+It provides real-time visibility and alerts when a secret is accessed by:
+- Tracking the exact API call (GetSecretValue) that exposes secret contents
+- Recording who accessed the secret, when, and how using CloudTrail
+- Converting that event into a security signal using CloudWatch metrics
+- Sending an immediate alert via SNS so action can be taken
+
+# Well Architected Framework Alignment
+
+This checklist validates that the security monitoring system follows AWS Well-Architected best practices.
+
+## Security
+- Secrets encrypted with KMS
+- Secrets access monitored via CloudTrail
+- Targeted alerts for `GetSecretValue` events
+
+## Operational Excellence
+- CloudWatch Logs enabled for analysis
+- Metric filters tested and verified
+- Alarms and SNS notifications validated
+
+## Reliability
+- Event-driven monitoring design
+- End-to-end alert delivery tested
+
+## Cost Optimization
+- Alerts scoped to high-risk events only
+- No excessive SNS notifications
+
+- 
 # Future Improvements
 - Integrate AWS Lambda for advanced event processing
 - Add a database service like DynamoDB for auditing purposes
