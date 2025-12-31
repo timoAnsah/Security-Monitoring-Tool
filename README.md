@@ -81,5 +81,5 @@ This checklist validates that the security monitoring system follows AWS Well-Ar
 
 - 
 # Future Improvements
-- Integrate AWS Lambda for advanced event processing
+- Integrate AWS Lambda function to rotate secret automatically
 - Add a database service like DynamoDB for auditing purposes
