@@ -82,4 +82,5 @@ This checklist validates that the security monitoring system follows AWS Well-Ar
 - 
 # Future Improvements
 - Integrate AWS Lambda function to rotate secret automatically
+- incorporate resource permissions to control which role or other AWS service can access my secret. Powerful for implementing the principle of least privilege
 - Add a database service like DynamoDB for auditing purposes
