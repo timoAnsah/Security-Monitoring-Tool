@@ -1,9 +1,1 @@
-Step by Step Guide
 
-Creating the Secret & Logging
-- create a secret called <b>LifeHack <b/> in Secrets Manager. 
-- This secret is a string that contains a phrase by Charles Bukowski  "Don’t Try"
-- Encrypted with KMS 
-by default the encryption will scramble the message so only authorised people with the correct key can descramble
-- Tagging is optional. They are useful in organising 
-  
