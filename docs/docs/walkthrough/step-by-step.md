@@ -44,9 +44,6 @@ Verifying the set-up above? Can CloudTrail detect when I access my Secret in Sec
 
 
 
-
-
-
 ## Retrieve Secret via the Console
 
 `Retrieve Secret Value` opens the actual content of the secret. This triggers `GetSecretValue` API call to AWS. Its this specific API call that we want to monitor with CloudTrail, it represents someone reading your secret.
